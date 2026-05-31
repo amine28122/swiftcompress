@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // PDF-lib is structural. Lower quality triggers more aggressive stream stripping.
                 const pdfBytes = await pdfDoc.save({ 
-                    useObjectStreams: qualPercent > 60 ? true : false,
+                    useObjectStreams: true,
                     addDefaultPage: false
                 });
                 
@@ -116,6 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 pdfControls.style.display = 'none';
                 pdfResult.style.display = 'block';
+                
+                document.getElementById('pdfResOrig').textContent = formatBytes(pdfFile.size);
+                document.getElementById('pdfResComp').textContent = formatBytes(blob.size);
                 
                 const url = URL.createObjectURL(blob);
                 const link = document.getElementById('pdfDownloadBtn');
@@ -194,6 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 vidControls.style.display = 'none';
                 vidResult.style.display = 'block';
+                
+                document.getElementById('vidResOrig').textContent = formatBytes(vidFile.size);
+                document.getElementById('vidResComp').textContent = formatBytes(blob.size);
                 
                 const url = URL.createObjectURL(blob);
                 const link = document.getElementById('vidDownloadBtn');
