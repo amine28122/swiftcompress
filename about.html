@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>About Us — SwiftCompress</title>
+    <meta name="description" content="Learn about SwiftCompress, our mission to build a faster web, and why we believe in 100% client-side privacy.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <span class="logo-icon"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="logo-text">SwiftCompress.</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Tools</a></li>
+                <li><a href="blog.html">Guides</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="index.html#workspace" class="btn-primary-sm">Start Compressing <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="text-page">
+        <h1 style="font-size: 3.5rem; text-align: center; margin-bottom: 3rem;">About <em>SwiftCompress</em></h1>
+        
+        <div style="font-size: 1.15rem; line-height: 1.8; color: var(--text-muted);">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-main); margin-bottom: 1.5rem;">Our Mission</h2>
+            <p>At SwiftCompress, we believe that optimizing digital media should not require sacrificing your privacy or paying exorbitant monthly subscription fees. We set out to build the fastest, most secure, and most elegant file optimization suite on the web.</p>
+
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-main); margin-top: 3rem; margin-bottom: 1.5rem;">The Privacy Problem</h2>
+            <p>Traditional online compressors operate on a fundamental flaw: they force you to upload your files to their servers. This means your personal photos, confidential corporate PDFs, and private videos are transmitted across the internet, stored on remote databases, processed, and then downloaded back to you.</p>
+            <p>This is a massive privacy risk. You have no way of knowing who is viewing your data, if the server is secure, or if your files are truly deleted afterward.</p>
+
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-main); margin-top: 3rem; margin-bottom: 1.5rem;">Our WASM Architecture</h2>
+            <p>We leverage cutting-edge <strong>WebAssembly (WASM)</strong> technology to solve this problem entirely. SwiftCompress runs complex, enterprise-grade compression algorithms (like FFmpeg) directly inside your web browser.</p>
+            <p>When you use our tools, your files never leave your device. The processing happens in your local RAM. It is instantaneously secure, blindingly fast, and requires zero bandwidth beyond loading the initial webpage.</p>
+
+            <div style="background: var(--brand-light); border-left: 4px solid var(--brand-primary); padding: 2rem; border-radius: 0 16px 16px 0; margin: 3rem 0;">
+                <h3 style="font-family: 'DM Sans', sans-serif; font-size: 1.25rem; color: var(--brand-primary); margin-bottom: 0.75rem; margin-top: 0;">Our Promise</h3>
+                <p style="margin: 0; color: var(--brand-primary);">We will never ask you to register for an account, we will never put a watermark on your files, and we will never, ever upload your data to our servers.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="modern-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo mb-4">
+                    <span class="logo-icon"><i class="fa-solid fa-layer-group"></i></span>
+                    <span class="logo-text" style="color: white;">SwiftCompress.</span>
+                </a>
+                <p>The world's most elegant, privacy-first file optimization suite. Designed for professionals.</p>
+            </div>
+            <div class="footer-links-col">
+                <h4>Product</h4>
+                <a href="index.html#workspace">Image Optimizer</a>
+                <a href="index.html#workspace">PDF Compressor</a>
+                <a href="index.html#workspace">Video Reducer</a>
+            </div>
+            <div class="footer-links-col">
+                <h4>Learn</h4>
+                <a href="blog.html">Optimization Guides</a>
+                <a href="article-pdf.html">PDF Compression</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SwiftCompress. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

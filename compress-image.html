@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">`n    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Compress Image Online Free - Reduce Image File Size</title>
+    <meta name="description" content="Compress image online free without losing quality. Reduce image file size of JPG, PNG, and WebP instantly. 100% free, secure, and private image compressor.">
+    
+    <!-- SEO Schema: WebSite -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","name":"SwiftCompress","url":"https://swiftcompress.com/compress-image.html","description":"Compress image online free locally in your browser."}
+    </script>
+    <!-- SEO Schema: SoftwareApplication -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Free Online Image Compressor","operatingSystem":"All","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    </script>
+
+    <!-- Google Fonts: Editorial / Creative Agency Vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Libraries for Client-Side Processing -->
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+
+    <!-- ======== NAVBAR ======== -->
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <span class="logo-icon"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="logo-text">SwiftCompress.</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Tools</a></li>
+                <li><a href="blog.html">Guides</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="#workspace" class="btn-primary-sm">Start Compressing <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ======== HERO ======== -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="badge-pill">
+                <span class="badge-new">New</span> 100% Client-side processing
+            </div>
+            <h1 class="hero-title">Compress image online free with <em>zero quality loss.</em></h1>
+            <p class="hero-subtitle">The most advanced free image compressor. Reduce image file size securely without uploading your photos to a remote server.</p>
+        </div>
+    </section>
+
+
+
+    <!-- ======== WORKSPACE ======== -->
+    <main class="main-workspace" id="workspace">
+        <!-- Tool Switcher -->
+        <div class="tool-switcher">
+            <a href="compress-image.html" class="switcher-btn active" style="text-decoration: none;">
+                <i class="fa-regular fa-image"></i> Image
+            </a>
+            <a href="compress-pdf.html" class="switcher-btn" style="text-decoration: none;">
+                <i class="fa-regular fa-file-pdf"></i> PDF
+            </a>
+            <a href="compress-video.html" class="switcher-btn" style="text-decoration: none;">
+                <i class="fa-solid fa-film"></i> Video
+            </a>
+        </div>
+
+        <div class="workspace-container">
+            <!-- IMAGE COMPRESSOR -->
+            <div id="view-image" class="tool-panel active-panel">
+                <div class="panel-layout">
+                    <!-- Sidebar Info -->
+                    <aside class="tool-sidebar">
+                        <div class="sidebar-icon"><i class="fa-regular fa-image"></i></div>
+                        <h2>Image Optimizer</h2>
+                        <p class="sidebar-desc">Reduce the weight of JPEG, PNG, and WebP images without visible quality loss. Perfect for web pages and emails.</p>
+                        <ul class="benefits-list">
+                            <li><i class="fa-solid fa-check"></i> Reduce size by up to 90%</li>
+                            <li><i class="fa-solid fa-check"></i> Keeps colors & detail sharp</li>
+                            <li><i class="fa-solid fa-check"></i> Max 20 MB per file</li>
+                            <li><i class="fa-solid fa-check"></i> Processed locally</li>
+                        </ul>
+                    </aside>
+                    
+                    <!-- Action Area -->
+                    <div class="tool-action">
+                        <div class="drop-zone" id="imgUploadArea" onclick="document.getElementById('imgInput').click()">
+                            <input type="file" id="imgInput" accept="image/png, image/jpeg, image/webp" hidden>
+                            <div class="drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                            <h3>Upload an Image</h3>
+                            <p>Drag & drop or click to browse</p>
+                        </div>
+
+                        <div class="process-section" id="imgControls" style="display: none;">
+                            <div class="file-item">
+                                <div class="file-details">
+                                    <i class="fa-regular fa-image"></i>
+                                    <span class="file-name" id="imgName">image.jpg</span>
+                                </div>
+                                <span class="file-size" id="imgSize">2.5 MB</span>
+                            </div>
+
+                            <div class="setting-group">
+                                <div class="setting-header">
+                                    <label>Quality</label>
+                                    <span class="setting-value" id="imgQualityVal">80%</span>
+                                </div>
+                                <input type="range" class="custom-range" id="imgQuality" min="10" max="100" value="80">
+                            </div>
+
+                            <button id="imgCompressBtn" class="btn-action">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Optimize Image
+                            </button>
+                        </div>
+
+                        <div class="result-section" id="imgResult" style="display: none;">
+                            <div class="success-banner">
+                                <i class="fa-solid fa-circle-check"></i> Image optimized successfully.
+                            </div>
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <span>Original Size</span>
+                                    <strong id="imgResOrig">0 KB</strong>
+                                </div>
+                                <div class="metric-card highlight">
+                                    <span>Compressed Size</span>
+                                    <strong id="imgResComp">0 KB</strong>
+                                </div>
+                            </div>
+                            <a id="imgDownloadBtn" class="btn-download"><i class="fa-solid fa-download"></i> Download</a>
+                            <button class="btn-reset" onclick="resetTool('image')">Process Another</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <!-- ======== SEO / FEATURES ======== -->
+    <section class="premium-seo-section">
+        <div class="seo-container">
+            <h2 class="seo-title">Absolute Privacy. <em>Flawless Results.</em></h2>
+            <p class="seo-lead">Most online tools force you to upload your sensitive files to a remote server. We took a different approach. SwiftCompress uses advanced WebAssembly to optimize your files entirely inside your own browser.</p>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Total Security</h3>
+                    <p>Your photos, confidential documents, and personal videos never touch our servers. Processing happens in your local RAM.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Instant Processing</h3>
+                    <p>No waiting for heavy files to upload or download. The compression begins the very second you select your file.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>No Hidden Limits</h3>
+                    <p>Completely free to use. No sign-ups, no watermarks, and no artificial daily limits blocking your workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="modern-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo mb-4">
+                    <span class="logo-icon"><i class="fa-solid fa-layer-group"></i></span>
+                    <span class="logo-text">SwiftCompress.</span>
+                </a>
+                <p>The world's most elegant, privacy-first file optimization suite. Designed for professionals.</p>
+            </div>
+            <div class="footer-links-col">
+                <h4>Product</h4>
+                <a href="index.html#workspace">Image Optimizer</a>
+                <a href="compress-pdf.html#workspace">PDF Compressor</a>
+                <a href="compress-video.html#workspace">Video Reducer</a>
+            </div>
+            <div class="footer-links-col">
+                <h4>Learn</h4>
+                <a href="blog.html">Optimization Guides</a>
+                <a href="article-pdf.html">PDF Compression</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SwiftCompress. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

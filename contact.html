@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Contact Us — SwiftCompress</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+        .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
+        .contact-method { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
+        .contact-icon { width: 48px; height: 48px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent-orange); font-size: 1.25rem; flex-shrink: 0; }
+        .contact-text strong { display: block; color: var(--text-main); font-size: 1.1rem; margin-bottom: 0.25rem; }
+        .contact-text p { color: var(--text-muted); margin: 0; }
+        
+        .contact-form { background: var(--bg-surface); padding: 3rem; border-radius: var(--radius-soft); border: 1px solid var(--border-color); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-main); }
+        .form-control { width: 100%; padding: 1rem; border: 1px solid var(--border-strong); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 1rem; background: #FFF; outline: none; transition: border-color 0.2s; }
+        .form-control:focus { border-color: var(--accent-orange); }
+        textarea.form-control { resize: vertical; min-height: 150px; }
+        
+        @media(max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <span class="logo-icon"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="logo-text">SwiftCompress.</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Tools</a></li>
+                <li><a href="blog.html">Guides</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="index.html#workspace" class="btn-primary-sm">Start Compressing <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="text-page" style="max-width: 1100px;">
+        <div style="text-align: center;">
+            <h1 style="font-size: 4rem; margin-bottom: 1rem;">Get in <em>Touch</em></h1>
+            <p style="font-size: 1.25rem; color: var(--text-muted);">Have a question, partnership proposal, or feedback? We'd love to hear from you.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Our Offices</h3>
+                <p style="color: var(--text-muted); margin-bottom: 3rem; line-height: 1.8;">While SwiftCompress operates globally in the cloud, our engineering team is distributed. Reach out to us directly through our primary channels below.</p>
+                
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <div class="contact-text">
+                        <strong>Email Us</strong>
+                        <p>hello@swiftcompress.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="contact-text">
+                        <strong>Headquarters</strong>
+                        <p>San Francisco, CA<br>United States</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="contact-text">
+                        <strong>Business Inquiries</strong>
+                        <p>partners@swiftcompress.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required placeholder="How can we help?">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required placeholder="Tell us more about your inquiry..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary-sm" style="width: 100%; justify-content: center; padding: 1.25rem; font-size: 1.1rem; background: var(--text-main);">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="modern-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo mb-4">
+                    <span class="logo-icon"><i class="fa-solid fa-layer-group"></i></span>
+                    <span class="logo-text" style="color: white;">SwiftCompress.</span>
+                </a>
+                <p>The world's most elegant, privacy-first file optimization suite. Designed for professionals.</p>
+            </div>
+            <div class="footer-links-col">
+                <h4>Product</h4>
+                <a href="index.html#workspace">Image Optimizer</a>
+                <a href="index.html#workspace">PDF Compressor</a>
+                <a href="index.html#workspace">Video Reducer</a>
+            </div>
+            <div class="footer-links-col">
+                <h4>Learn</h4>
+                <a href="blog.html">Optimization Guides</a>
+                <a href="article-pdf.html">PDF Compression</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SwiftCompress. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
