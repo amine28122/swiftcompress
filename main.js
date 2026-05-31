@@ -185,12 +185,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Read quality slider (10% to 100%)
                 const qualPercent = parseInt(document.getElementById('vidQuality').value) || 70;
-                // Map 100% Quality -> CRF 18, 10% Quality -> CRF 45
-                const crfValue = Math.round(48 - (qualPercent * 0.3)).toString();
+                // Map 100% Quality -> CRF 25, 10% Quality -> CRF 47 (More aggressive compression)
+                const crfValue = Math.round(50 - (qualPercent * 0.25)).toString();
 
-                // Compress video (-vcodec libx264 -crf [dynamic])
+                // Compress video: better preset (veryfast) + scale down if huge + compress audio
                 const outName = 'output.mp4';
-                await ffmpeg.run('-i', vidFile.name, '-vcodec', 'libx264', '-crf', crfValue, '-preset', 'ultrafast', outName);
+                await ffmpeg.run(
+                    '-i', vidFile.name, 
+                    '-vcodec', 'libx264', 
+                    '-crf', crfValue, 
+                    '-preset', 'veryfast', 
+                    '-acodec', 'aac', 
+                    '-b:a', '64k', // Reduce audio bitrate to save space
+                    outName
+                );
                 
                 const data = ffmpeg.FS('readFile', outName);
                 const blob = new Blob([data.buffer], { type: 'video/mp4' });
