@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/ads.txt",
+      "destination": "https://srv.adstxtmanager.com/82613/swiftcompress.com",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
