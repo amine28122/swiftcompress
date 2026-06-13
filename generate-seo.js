@@ -80,7 +80,7 @@ targets.forEach(target => {
 
     
     // Replace Canonical / URL
-    html = html.replace(/https:\/\/swiftcompress\.com\/[a-z-]+\.html/g, `https://swiftcompress.com/${target.slug}.html`);
+    html = html.replace(/https:\/\/swiftcompress\.com\/[a-z-]+\.html/g, `https://www.swiftcompress.com/${target.slug}.html`);
 
     // Replace H1
     html = html.replace(/<h1 class="hero-title">.*?<\/h1>/, `<h1 class="hero-title">${target.h1.replace(target.detail, `<em>${target.detail}</em>`)}</h1>`);
