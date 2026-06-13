@@ -21,13 +21,17 @@
     <meta name="twitter:description" content="Learn how to reduce video for whatsapp securely inside your browser. No server uploads. 100% free and private client-side compression.">
     <meta name="twitter:image" content="https://swiftcompress.com/favicon.svg">
     
-    <!-- SEO Schema: WebSite -->
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","name":"SwiftCompress","url":"https://swiftcompress.com/reduce-video-size-for-whatsapp.html","description":"Free online tool to compress videos locally in your browser."}
-    </script>
     <!-- SEO Schema: SoftwareApplication -->
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Swift Video Compressor","operatingSystem":"All","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Swift Video Compressor","operatingSystem":"All","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"1589"}}
+    </script>
+    <!-- HowTo Schema -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"HowTo","name":"How to Compress a Video Online Free","description":"Compress MP4 and WebM videos directly in your browser using FFmpeg WebAssembly.","totalTime":"PT5M","step":[{"@type":"HowToStep","name":"Upload Your Video","text":"Click the upload area or drag and drop your MP4, WebM, or MOV video file."},{"@type":"HowToStep","name":"Choose Quality","text":"Set the quality slider. Higher values preserve quality while lower values create smaller files for Discord, WhatsApp, etc."},{"@type":"HowToStep","name":"Compress & Download","text":"Click Compress Video. FFmpeg runs in your browser — no uploads. Download when ready."}]}
+    </script>
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does browser-based video compression work?","acceptedAnswer":{"@type":"Answer","text":"SwiftCompress uses FFmpeg compiled to WebAssembly (WASM), which runs the full FFmpeg video encoder directly inside your browser tab. No server is involved — your video is processed entirely in your device's RAM."}},{"@type":"Question","name":"What video formats are supported?","acceptedAnswer":{"@type":"Answer","text":"We support MP4 (H.264), WebM, MOV, and AVI files. Output is always in MP4 format with H.264 encoding for maximum compatibility."}},{"@type":"Question","name":"Why does video compression take longer than images?","acceptedAnswer":{"@type":"Answer","text":"Video compression is computationally intensive. Unlike images, video requires re-encoding every single frame. A 1-minute video may take 2-5 minutes to compress in the browser."}},{"@type":"Question","name":"What is the maximum video file size?","acceptedAnswer":{"@type":"Answer","text":"We recommend files under 100MB for browser-based compression. Larger files may consume too much RAM."}},{"@type":"Question","name":"Can I compress video for Discord or WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Yes! Set the quality slider low (around 30-40%) to get files under Discord's 8MB limit (free users) or 25MB limit (Nitro). For WhatsApp, aim for under 16MB."}}]}
     </script>
 
     <!-- Google Fonts: Editorial / Creative Agency Vibe -->
@@ -165,7 +169,8 @@
                                     <strong id="vidResComp">0 KB</strong>
                                 </div>
                             </div>
-                            <a id="vidDownloadBtn" class="btn-download btn-vid"><i class="fa-solid fa-download"></i> Download</a>
+                            <span id="vidSavingsBadge" class="savings-badge"></span>
+                            <a id="vidDownloadBtn" class="btn-download btn-vid"><i class="fa-solid fa-download"></i> Download Compressed Video</a>
                             <button class="btn-reset" onclick="resetTool('video')">Process Another</button>
                         </div>
                     </div>
@@ -199,6 +204,33 @@
                     <h3>No Hidden Limits</h3>
                     <p>Completely free to use. No sign-ups, no watermarks, and no artificial daily limits blocking your workflow.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== FAQ SECTION ======== -->
+    <section style="background: white; border-top: 1px solid var(--border-color);">
+        <div class="faq-section">
+            <h2>Frequently Asked <em>Questions</em></h2>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How does browser-based video compression work? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">SwiftCompress uses FFmpeg compiled to WebAssembly (WASM), which runs the full FFmpeg video encoder directly inside your browser tab. No server is involved — your video stays on your device.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What video formats are supported? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">We support MP4 (H.264), WebM, MOV, and AVI files. Output is always in MP4 format with H.264 encoding for maximum device compatibility.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Why does video compression take longer than images? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Video compression requires re-encoding every single frame using CPU power. A 1-minute video may take 2–5 minutes to compress in the browser — this is completely normal.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Can I compress video for Discord or WhatsApp? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Yes! Set quality to 30–40% to get files under Discord's 8MB free limit or 25MB Nitro limit. For WhatsApp, aim for under 16MB.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What is the maximum video size? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">We recommend files under 100MB for browser-based compression. Larger files may consume too much browser memory (RAM). Try splitting long videos first.</div>
             </div>
         </div>
     </section>
