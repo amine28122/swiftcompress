@@ -72,6 +72,13 @@ targets.forEach(target => {
     html = html.replace(/<title>.*?<\/title>/, `<title>${target.title} — SwiftCompress</title>`);
     html = html.replace(/<meta name="description" content=".*?">/, `<meta name="description" content="Learn how to ${target.h1.toLowerCase()} securely inside your browser. No server uploads. 100% free and private client-side compression.">`);
     
+    // Replace OG Tags
+    html = html.replace(/<meta property="og:title" content=".*?">/, `<meta property="og:title" content="${target.title} — SwiftCompress">`);
+    html = html.replace(/<meta property="og:description" content=".*?">/, `<meta property="og:description" content="Learn how to ${target.h1.toLowerCase()} securely inside your browser. No server uploads. 100% free and private client-side compression.">`);
+    html = html.replace(/<meta name="twitter:title" content=".*?">/, `<meta name="twitter:title" content="${target.title} — SwiftCompress">`);
+    html = html.replace(/<meta name="twitter:description" content=".*?">/, `<meta name="twitter:description" content="Learn how to ${target.h1.toLowerCase()} securely inside your browser. No server uploads. 100% free and private client-side compression.">`);
+
+    
     // Replace Canonical / URL
     html = html.replace(/https:\/\/swiftcompress\.com\/[a-z-]+\.html/g, `https://swiftcompress.com/${target.slug}.html`);
 
