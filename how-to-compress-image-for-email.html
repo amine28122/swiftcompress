@@ -53,7 +53,149 @@
         <span>Compress Images for Email</span>
     </nav>
 
-    <main class="text-page">
+    <main class="main-workspace" id="workspace">
+        <!-- Tool Switcher -->
+        <div class="tool-switcher">
+            <a href="compress-image.html" class="switcher-btn active" style="text-decoration: none;">
+                <i class="fa-regular fa-image"></i> Image
+            </a>
+            <a href="compress-pdf.html" class="switcher-btn" style="text-decoration: none;">
+                <i class="fa-regular fa-file-pdf"></i> PDF
+            </a>
+            <a href="compress-video.html" class="switcher-btn" style="text-decoration: none;">
+                <i class="fa-solid fa-film"></i> Video
+            </a>
+        </div>
+
+        <div class="workspace-container">
+            <!-- IMAGE COMPRESSOR -->
+            <div id="view-image" class="tool-panel active-panel">
+                <div class="panel-layout">
+                    <!-- Sidebar Info -->
+                    <aside class="tool-sidebar">
+                        <div class="sidebar-icon"><i class="fa-regular fa-image"></i></div>
+                        <h2>Image Optimizer</h2>
+                        <p class="sidebar-desc">Reduce the weight of JPEG, PNG, and WebP images without visible quality loss. Perfect for web pages and emails.</p>
+                        <ul class="benefits-list">
+                            <li><i class="fa-solid fa-check"></i> Reduce size by up to 90%</li>
+                            <li><i class="fa-solid fa-check"></i> Keeps colors & detail sharp</li>
+                            <li><i class="fa-solid fa-check"></i> Max 20 MB per file</li>
+                            <li><i class="fa-solid fa-check"></i> Processed locally</li>
+                        </ul>
+                    </aside>
+                    
+                    <!-- Action Area -->
+                    <div class="tool-action">
+                        <div class="drop-zone" id="imgUploadArea" onclick="document.getElementById('imgInput').click()">
+                            <input type="file" id="imgInput" accept="image/png, image/jpeg, image/webp" hidden>
+                            <div class="drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                            <h3>Upload an Image</h3>
+                            <p>Drag & drop or click to browse</p>
+                        </div>
+
+                        <div class="process-section" id="imgControls" style="display: none;">
+                            <div class="file-item">
+                                <div class="file-details">
+                                    <i class="fa-regular fa-image"></i>
+                                    <span class="file-name" id="imgName">image.jpg</span>
+                                </div>
+                                <span class="file-size" id="imgSize">2.5 MB</span>
+                            </div>
+
+                            <div class="setting-group">
+                                <div class="setting-header">
+                                    <label>Quality</label>
+                                    <span class="setting-value" id="imgQualityVal">80%</span>
+                                </div>
+                                <input type="range" class="custom-range" id="imgQuality" min="10" max="100" value="80">
+                            </div>
+
+                            <button id="imgCompressBtn" class="btn-action">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Optimize Image
+                            </button>
+                        </div>
+
+                        <div class="result-section" id="imgResult" style="display: none;">
+                            <div class="success-banner">
+                                <i class="fa-solid fa-circle-check"></i> Image optimized successfully.
+                            </div>
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <span>Original Size</span>
+                                    <strong id="imgResOrig">0 KB</strong>
+                                </div>
+                                <div class="metric-card highlight">
+                                    <span>Compressed Size</span>
+                                    <strong id="imgResComp">0 KB</strong>
+                                </div>
+                            </div>
+                            <span id="imgSavingsBadge" class="savings-badge"></span>
+                            <a id="imgDownloadBtn" class="btn-download"><i class="fa-solid fa-download"></i> Download Compressed Image</a>
+                            <button class="btn-reset" onclick="resetTool('image')">Process Another</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+<!-- ======== SEO / FEATURES ======== -->
+    <section class="premium-seo-section">
+        <div class="seo-container">
+            <h2 class="seo-title">Absolute Privacy. <em>Flawless Results.</em></h2>
+            <p class="seo-lead">Most online tools force you to upload your sensitive files to a remote server. We took a different approach. SwiftCompress uses advanced WebAssembly to optimize your files entirely inside your own browser.</p>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Total Security</h3>
+                    <p>Your photos, confidential documents, and personal videos never touch our servers. Processing happens in your local RAM.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Instant Processing</h3>
+                    <p>No waiting for heavy files to upload or download. The compression begins the very second you select your file.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>No Hidden Limits</h3>
+                    <p>Completely free to use. No sign-ups, no watermarks, and no artificial daily limits blocking your workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ======== FAQ SECTION ======== -->
+    <section style="background: white; border-top: 1px solid var(--border-color);">
+        <div class="faq-section">
+            <h2>Frequently Asked <em>Questions</em></h2>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Is it safe to compress images online? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Yes. SwiftCompress processes all images entirely inside your browser using WebAssembly. Your files never leave your device — 100% private and secure.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What image formats are supported? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">We support JPG/JPEG, PNG, and WebP. PNG files are intelligently converted to WebP for maximum compression without visible quality loss.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Will my image lose quality? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">At 80% quality, the difference is invisible to the human eye while reducing file size by 60–80%. Adjust the slider to find your ideal balance.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Is there a file size limit? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">SwiftCompress handles images up to 20MB. There are no daily limits, no sign-ups, and no watermarks — always 100% free.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How much can I reduce an image file size? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Typically 60–90% reduction depending on the image content and your quality setting. A 5MB photo can easily become under 500KB without visible degradation.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== SEO / GUIDE ======== -->
+    <section class="premium-seo-section" style="background: white; padding: 4rem 2rem; border-top: 1px solid var(--border-light);">
+        <div class="seo-container" style="max-width: 800px; margin: 0 auto; color: var(--text-main);">
         <div style="margin-bottom: 2.5rem;">
             <a href="blog.html" style="color: var(--accent-orange); text-decoration: none; font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Back to Guides</a>
         </div>

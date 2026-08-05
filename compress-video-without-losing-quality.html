@@ -53,7 +53,156 @@
         <span>Compress Video Without Losing Quality</span>
     </nav>
 
-    <main class="text-page">
+    <main class="main-workspace" id="workspace">
+        <!-- Tool Switcher -->
+        <div class="tool-switcher">
+            <a href="compress-image.html" class="switcher-btn" style="text-decoration: none;">
+                <i class="fa-regular fa-image"></i> Image
+            </a>
+            <a href="compress-pdf.html" class="switcher-btn" style="text-decoration: none;">
+                <i class="fa-regular fa-file-pdf"></i> PDF
+            </a>
+            <a href="compress-video.html" class="switcher-btn active" style="text-decoration: none;">
+                <i class="fa-solid fa-film"></i> Video
+            </a>
+        </div>
+
+        <div class="workspace-container">
+            <!-- VIDEO COMPRESSOR -->
+            <div id="view-video" class="tool-panel active-panel">
+                <div class="panel-layout">
+                    <!-- Sidebar Info -->
+                    <aside class="tool-sidebar sidebar-vid">
+                        <div class="sidebar-icon"><i class="fa-solid fa-film"></i></div>
+                        <h2>Video Reducer</h2>
+                        <p class="sidebar-desc">Compress MP4 videos using FFmpeg compiled to WebAssembly. Runs entirely in your browser.</p>
+                        <ul class="benefits-list">
+                            <li><i class="fa-solid fa-check"></i> H.264 re-encoding</li>
+                            <li><i class="fa-solid fa-check"></i> Reduce by 50-70%</li>
+                            <li><i class="fa-solid fa-check"></i> Max 100 MB per file</li>
+                            <li><i class="fa-solid fa-check"></i> No server uploads</li>
+                        </ul>
+                    </aside>
+                    
+                    <!-- Action Area -->
+                    <div class="tool-action">
+                        <div class="drop-zone drop-vid" id="vidUploadArea" onclick="document.getElementById('vidInput').click()">
+                            <input type="file" id="vidInput" accept="video/mp4, video/webm, video/quicktime" hidden>
+                            <div class="drop-icon"><i class="fa-solid fa-video"></i></div>
+                            <h3>Upload a Video</h3>
+                            <p>Drag & drop or click to browse</p>
+                        </div>
+
+                        <div class="process-section" id="vidControls" style="display: none;">
+                            <div class="file-item">
+                                <div class="file-details">
+                                    <i class="fa-solid fa-film"></i>
+                                    <span class="file-name" id="vidName">video.mp4</span>
+                                </div>
+                                <span class="file-size" id="vidSize">15 MB</span>
+                            </div>
+
+                            <div class="setting-group">
+                                <div class="setting-header">
+                                    <label>Video Quality</label>
+                                    <span class="setting-value" id="vidQualityVal" style="color: var(--brand-primary);">Good (70%)</span>
+                                </div>
+                                <input type="range" class="custom-range" id="vidQuality" min="10" max="100" value="70" style="accent-color: var(--brand-primary);" oninput="document.getElementById('vidQualityVal').innerText = this.value + '%'">
+                            </div>
+
+                            <div class="progress-wrapper" style="display:none;" id="vidProgressContainer">
+                                <div class="progress-track">
+                                    <div class="progress-fill fill-vid" id="vidProgressBar"></div>
+                                </div>
+                                <p class="progress-status" id="vidProgressText">Initializing Engine...</p>
+                            </div>
+
+                            <button id="vidCompressBtn" class="btn-action btn-vid">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Compress Video
+                            </button>
+                        </div>
+
+                        <div class="result-section" id="vidResult" style="display: none;">
+                            <div class="success-banner banner-vid">
+                                <i class="fa-solid fa-circle-check"></i> Video compressed successfully.
+                            </div>
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <span>Original Size</span>
+                                    <strong id="vidResOrig">0 KB</strong>
+                                </div>
+                                <div class="metric-card highlight">
+                                    <span>Compressed Size</span>
+                                    <strong id="vidResComp">0 KB</strong>
+                                </div>
+                            </div>
+                            <span id="vidSavingsBadge" class="savings-badge"></span>
+                            <a id="vidDownloadBtn" class="btn-download btn-vid"><i class="fa-solid fa-download"></i> Download Compressed Video</a>
+                            <button class="btn-reset" onclick="resetTool('video')">Process Another</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+<!-- ======== SEO / FEATURES ======== -->
+    <section class="premium-seo-section">
+        <div class="seo-container">
+            <h2 class="seo-title">Absolute Privacy. <em>Flawless Results.</em></h2>
+            <p class="seo-lead">Most online tools force you to upload your sensitive files to a remote server. We took a different approach. SwiftCompress uses advanced WebAssembly to optimize your files entirely inside your own browser.</p>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Total Security</h3>
+                    <p>Your photos, confidential documents, and personal videos never touch our servers. Processing happens in your local RAM.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Instant Processing</h3>
+                    <p>No waiting for heavy files to upload or download. The compression begins the very second you select your file.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>No Hidden Limits</h3>
+                    <p>Completely free to use. No sign-ups, no watermarks, and no artificial daily limits blocking your workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ======== FAQ SECTION ======== -->
+    <section style="background: white; border-top: 1px solid var(--border-color);">
+        <div class="faq-section">
+            <h2>Frequently Asked <em>Questions</em></h2>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How does browser-based video compression work? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">SwiftCompress uses FFmpeg compiled to WebAssembly (WASM), which runs the full FFmpeg video encoder directly inside your browser tab. No server is involved — your video stays on your device.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What video formats are supported? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">We support MP4 (H.264), WebM, MOV, and AVI files. Output is always in MP4 format with H.264 encoding for maximum device compatibility.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Why does video compression take longer than images? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Video compression requires re-encoding every single frame using CPU power. A 1-minute video may take 2–5 minutes to compress in the browser — this is completely normal.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Can I compress video for Discord or WhatsApp? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">Yes! Set quality to 30–40% to get files under Discord's 8MB free limit or 25MB Nitro limit. For WhatsApp, aim for under 16MB.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What is the maximum video size? <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="faq-answer">We recommend files under 100MB for browser-based compression. Larger files may consume too much browser memory (RAM). Try splitting long videos first.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== SEO / GUIDE ======== -->
+    <section class="premium-seo-section" style="background: white; padding: 4rem 2rem; border-top: 1px solid var(--border-light);">
+        <div class="seo-container" style="max-width: 800px; margin: 0 auto; color: var(--text-main);">
         <div style="margin-bottom: 2.5rem;">
             <a href="blog.html" style="color: var(--brand-primary); text-decoration: none; font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Back to Guides</a>
         </div>
